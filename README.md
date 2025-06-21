@@ -4,6 +4,7 @@ Análise da diversidade genética utilizando marcadores RAPD e SSR
 ACESSE O LINK: https://heliojunior.shinyapps.io/shiny/
 
 **Para marcadores RAPD**
+
 ✅ 1) Escolha e envie o arquivo Excel com os dados da matriz binario. **Exemplo da montagem da tabela se encontra abaixo.**
 
 | Genótipo | 500 pb | 600 pb | 1100 pb | 1200 pb | 500 pb.1 | 
@@ -15,6 +16,7 @@ ACESSE O LINK: https://heliojunior.shinyapps.io/shiny/
 |    G5    | 0      | 0      | 0       | 0       | 1        |
 
 •	Clique no botão "Browse..." (ou "Escolher arquivo" dependendo do navegador). 
+
 ✅ 2) Selecione o Método de Distância
 •	jaccard → Distância Jaccard
 
@@ -34,6 +36,7 @@ Clique no botão "Rodar Análise".
 • Distâncias entre os grupos
 
 **Para marcadores SSR**
+
 ✅ 1) Escolha e envie o arquivo Excel com os dados genotipados. **Exemplo da montagem da tabela se encontra abaixo.**
 
 | Genótipo | SSR1   |   SSR2 | SSR3    |  SSR4   |   SSR5   |
@@ -45,6 +48,7 @@ Clique no botão "Rodar Análise".
 |    G5    |   18   |   35   |   22    |   45    |    11    |
 
 •	Clique no botão "Browse..." (ou "Escolher arquivo" dependendo do navegador).
+
 ✅ 2) Selecione o Método de Distância
 euclidean → Distância Euclidiana
 
