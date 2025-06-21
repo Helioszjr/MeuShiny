@@ -7,7 +7,7 @@ ACESSE O LINK: https://heliojunior.shinyapps.io/shiny/
 
 ✅ 1) Escolha e envie o arquivo Excel com os dados da matriz binario. **Exemplo da montagem da tabela se encontra abaixo.**
 
-| Genótipo | 500 pb | 600 pb | 1100 pb | 1200 pb | 500 pb.1 | 
+| Genótipo | 500 pb | 600 pb | 1100 pb | 1200 pb |   500 pb | 
 | -------- | ------ | ------ | ------- | ------- | -------- |
 |    G1    | 0      | 1      | 1       | 1       | 0        |
 |    G2    | 0      | 1      | 1       | 1       | 1        |
