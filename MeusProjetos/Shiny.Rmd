@@ -1,0 +1,120 @@
+---
+title: |
+  ![](img/pgm.png){width=40%}
+
+  Aula Prática: Diversidade Genética
+author: "Adriana Gonela, Helio de Souza Junior e Pedro Henrique Silvestre Duhatschek"
+date: "06-20-2025"
+runtime: shiny
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+Elaborado por [Helio de Souza Junior](https://github.com/Helioszjr), com
+[RStudio](https://posit.co/download/rstudio-desktop) usando
+[Rmarkdown](https://rmarkdown.rstudio.com/index.html),
+[Quarto](https://quarto.org/docs/guide/) e
+[Shiny](https://shiny.posit.co/). Código disponível no
+[GitHub](https://github.com/Helioszjr).
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Definindo o mirror do CRAN
+options(repos = c(CRAN = "https://cran.r-project.org"))
+
+# Instalando os pacotes necessários (se ainda não tiver)
+if (!require(shiny)) install.packages("shiny")
+if (!require(readxl)) install.packages("readxl")
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(adegenet)) install.packages("adegenet")
+if (!require(vegan)) install.packages("vegan")
+if (!require(ape)) install.packages("ape")
+if (!require(cluster)) install.packages("cluster")
+if (!require(factoextra)) install.packages("factoextra")
+if (!require(pheatmap)) install.packages("pheatmap")
+
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+ui <- fluidPage(
+  titlePanel("Análise da diversidade genética utilizando marcadores RAPD e SSR"),
+
+  sidebarLayout(
+    sidebarPanel(
+      fileInput("file1", "Escolha o arquivo Excel com os dados:", accept = ".xlsx"),
+      selectInput("dist_method", "Método de Distância:", choices = c("euclidean", "jaccard")),
+      selectInput("cluster_method", "Método de Agrupamento:", choices = c("average", "single", "complete")),
+      numericInput("n_clusters", "Número de Grupos (Clusters):", value = 3, min = 2, max = 10),
+      actionButton("run", "Rodar Análise")
+    ),
+
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Visualização dos Dados", tableOutput("data_head")),
+        tabPanel("PCA com Grupos", plotOutput("pca_cluster_plot")),
+        tabPanel("Dendrograma", plotOutput("dendrogram_color_plot")),
+        tabPanel("Heatmap", plotOutput("heatmap_plot"))
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+
+  dadosInput <- reactive({
+    req(input$file1)
+    read_excel(input$file1$datapath)
+  })
+
+  distancias <- reactive({
+    req(dadosInput())
+    dados_mat <- as.matrix(dadosInput()[, -1])  # Supondo que a 1ª coluna seja ID
+    if (input$dist_method == "euclidean") {
+      dist(dados_mat, method = "euclidean")
+    } else {
+      vegdist(dados_mat, method = "jaccard", binary = TRUE)
+    }
+  })
+
+  output$data_head <- renderTable({
+    head(dadosInput())
+  })
+
+  output$pca_cluster_plot <- renderPlot({
+    req(distancias())
+    hc <- hclust(distancias(), method = input$cluster_method)
+    grupos <- cutree(hc, k = input$n_clusters)
+
+    pca_res <- prcomp(dadosInput()[, -1], scale. = TRUE)
+
+    fviz_cluster(list(data = pca_res$x, cluster = grupos),
+                 geom = "point",
+                 ellipse.type = "norm",
+                 palette = "jco",
+                 ggtheme = theme_minimal()) +
+      labs(title = "Análise de Componentes Principais (PCA)")
+  })
+
+  output$dendrogram_color_plot <- renderPlot({
+    req(distancias())
+    hc <- hclust(distancias(), method = input$cluster_method)
+    fviz_dend(hc, k = input$n_clusters, rect = TRUE, rect_border = "jco", rect_fill = TRUE,
+              main = "Dendrograma")
+  })
+
+  output$heatmap_plot <- renderPlot({
+    req(distancias())
+    dist_mat <- as.matrix(distancias())
+    pheatmap(dist_mat, cluster_rows = TRUE, cluster_cols = TRUE, display_numbers = TRUE,
+             color = colorRampPalette(c("white", "blue"))(50))
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r}
+rsconnect::deployApp("C:/Git/EstDocenciaUEM/AULA - PRATICA/MeusProjetos/Shiny.Rmd")
+```
