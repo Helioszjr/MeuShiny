@@ -31,8 +31,11 @@ ACESSE O LINK: https://heliojunior.shinyapps.io/shiny/
 Clique no botão "Rodar Análise".
 
 • Dendrograma
+
 • Gráfico de agrupamento
+
 • Tabela de pertencimento dos indivíduos aos clusters
+
 • Distâncias entre os grupos
 
 **Para marcadores SSR**
@@ -64,7 +67,10 @@ Clique no botão "Rodar Análise".
 O aplicativo irá processar os dados e mostrar os seguintes resultados (depende da implementação):
 
 • Dendrograma
+
 • Gráfico de agrupamento
+
 • Tabela de pertencimento dos indivíduos aos clusters
+
 • Distâncias entre os grupos
 
