@@ -17,11 +17,14 @@ ACESSE O LINK: https://heliojunior.shinyapps.io/shiny/
 •	Clique no botão "Browse..." (ou "Escolher arquivo" dependendo do navegador). 
 ✅ 2) Selecione o Método de Distância
 •	jaccard → Distância Jaccard
+
 ✅ 3) Escolha o Método de Agrupamento 
 •	average → Média das distâncias (UPGMA)
+
 ✅ 4) Defina o Número de Grupos (Clusters)
 •	3 → O app vai formar 3 clusters/grupos.
 •	4 → O app vai formar 4 clusters/grupos. **ESCOLHA ESSA OPÇÃO**
+
 ✅ 5) Rodar a Análise
 Clique no botão "Rodar Análise".
 
@@ -33,7 +36,7 @@ Clique no botão "Rodar Análise".
 **Para marcadores SSR**
 ✅ 1) Escolha e envie o arquivo Excel com os dados genotipados. **Exemplo da montagem da tabela se encontra abaixo.**
 
-| Genótipo | 500 pb | 600 pb | 1100 pb | 1200 pb | 500 pb.1 |
+| Genótipo | SSR1   |   SSR2 | SSR3    |  SSR4   |   SSR5   |
 | -------- | ------ | ------ | ------- | ------- | -------- |
 |    G1    |   22   |   31   |   18    |   33    |    22    |
 |    G2    |   43   |   25   |   15    |   45    |    51    |
@@ -44,14 +47,17 @@ Clique no botão "Rodar Análise".
 •	Clique no botão "Browse..." (ou "Escolher arquivo" dependendo do navegador).
 ✅ 2) Selecione o Método de Distância
 euclidean → Distância Euclidiana
+
 ✅ 3) Escolha o Método de Agrupamento
 •	average → Média das distâncias (UPGMA)
+
 ✅ 4) Defina o Número de Grupos (Clusters)
 •	3 → O app vai formar 3 clusters/grupos.
 •	4 → O app vai formar 3 clusters/grupos. ESCOLHA ESSA OPÇÃO
+
 ✅ 5) Rodar a Análise
 Clique no botão "Rodar Análise".
-•	O aplicativo irá processar os dados e mostrar os seguintes resultados (depende da implementação):
+O aplicativo irá processar os dados e mostrar os seguintes resultados (depende da implementação):
 
 • Dendrograma
 • Gráfico de agrupamento
