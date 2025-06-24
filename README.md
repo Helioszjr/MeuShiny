@@ -60,7 +60,7 @@ euclidean → Distância Euclidiana
 
 ✅ 4) Defina o Número de Grupos (Clusters)
 •	3 → O app vai formar 3 clusters/grupos.
-•	4 → O app vai formar 3 clusters/grupos. ESCOLHA ESSA OPÇÃO
+•	4 → O app vai formar 3 clusters/grupos. **ESCOLHA ESSA OPÇÃO**
 
 ✅ 5) Rodar a Análise
 Clique no botão "Rodar Análise".
